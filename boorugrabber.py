@@ -10,10 +10,10 @@ class BooruGrabber(object):
     danbooru = "http://danbooru.donmai.us"
 
     def __init__(self):
-        """grabs newest images from booru"""
+        """grabs 100 newest images from booru"""
         tags = local_settings.tags
 
-        url = self.danbooru + "/posts.json?tags="+str.join("+", tags)
+        url = self.danbooru + "/posts.json?limit=100&tags="+str.join("+", tags)
         request = requests.get(url)
         if request.status_code == 200:
             self.r = request.json()[randint(0, len(request.json()))]
