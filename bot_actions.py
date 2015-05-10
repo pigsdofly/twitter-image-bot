@@ -30,3 +30,12 @@ class Bot(object):
         for fan in fans:
             self.api.create_friendship(fan)
 
+    def last_status(self, userid):
+        """returns last status posted by the bot, used to prevent duplicate tweets"""
+        timeline = self.api.user_timeline(userid)
+        if len(timeline):
+            last_tweet = timeline[0].text
+        else:
+            last_tweet = ""
+        return last_tweet
+
