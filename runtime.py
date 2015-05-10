@@ -3,6 +3,7 @@ import local_settings
 from boorugrabber import BooruGrabber
 from bot_actions import Bot
 import requests
+import os
 
 
 def main():
@@ -20,5 +21,6 @@ def main():
     grabber.download_image()
 
     bot.make_image_post(grabber.filename,grabber.get_source())
+    os.remove(grabber.filename)
 
 main()

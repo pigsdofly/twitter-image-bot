@@ -16,11 +16,15 @@ class BooruGrabber(object):
         url = self.danbooru + "/posts.json?limit=100&tags="+str.join("+", tags)
         request = requests.get(url)
         if request.status_code == 200:
+            request = request.json()
             if last_id:
-                for r in request.json():
+                for r in request:
                     if last_id == r["id"]: 
                         request.remove(r)
-            self.r = request.json()[randint(0, len(request.json()))]
+                    if r["rating"] != "s":
+                    #can be removed if you want to be l00d
+                        request.remove(r)
+            self.r = request[randint(0, len(request))]
 
     def download_image(self):
         """downloads the image"""

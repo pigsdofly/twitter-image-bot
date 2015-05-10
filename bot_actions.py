@@ -27,11 +27,15 @@ class Bot(object):
         followers = self.api.followers_ids(userid)
         following = self.api.friends_ids(userid)
         fans = set(followers) - set(following)
+        not_fans = set(following) - set(followers)
         for fan in fans:
             self.api.create_friendship(fan)
+        for not_fan in not_fans:
+            self.api.destroy_friendship(not_fan)
 
     def last_status(self, userid):
-        """returns last status posted by the bot, used to prevent duplicate tweets"""
+        """returns last status posted by the bot, 
+           used to prevent duplicate tweets"""
         timeline = self.api.user_timeline(userid)
         if len(timeline):
             last_tweet = timeline[0].text
