@@ -1,7 +1,14 @@
 # Twitter image bot
 Python-based system for making a twitter imagebot
 
+setup
+=====
 
-To use, clone and put user settings in the local_settings.py file
+1. Use pip to install the required libraries through 
 
-Uses the <a href="http://www.tweepy.org">tweepy</a> and <a href="http://docs.python-requests.org">requests</a> libraries
+```
+pip install -r requirements.txt
+```
+
+2. Put user settings (API keys,account name and booru tags) in the local_settings.py file
+3. Run
