@@ -39,6 +39,6 @@ class BooruGrabber(object):
 
     def get_source(self):
         """returns source (booru) of image"""
-        return self.danbooru + "/posts/"+str(self.r["id"])
+        return (self.danbooru + "/posts/"+str(self.r["id"])).decode().encode("UTF-8")
 
 
