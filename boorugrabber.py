@@ -17,14 +17,15 @@ class BooruGrabber(object):
         request = requests.get(url)
         if request.status_code == 200:
             request = request.json()
+            req2 = []
             if last_id:
                 for r in request:
                     if last_id == r["id"]: 
                         request.remove(r)
-                    if r["rating"] != "s":
+                    if r["rating"] == "s" or r["rating"] == "q":
                     #can be removed if you want to be l00d
-                        request.remove(r)
-            self.r = request[randint(0, len(request))]
+                        req2.append(r)
+            self.r = req2[randint(0, len(request))]
 
     def download_image(self):
         """downloads the image"""
@@ -40,5 +41,3 @@ class BooruGrabber(object):
     def get_source(self):
         """returns source (booru) of image"""
         return (self.danbooru + "/posts/"+str(self.r["id"])).decode().encode("UTF-8")
-
-
