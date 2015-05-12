@@ -25,7 +25,7 @@ class BooruGrabber(object):
                     if r["rating"] == "s" or r["rating"] == "q":
                     #can be removed if you want to be l00d
                         req2.append(r)
-            self.r = req2[randint(0, len(request))]
+            self.r = req2[randint(0, len(req2))]
 
     def download_image(self):
         """downloads the image"""
