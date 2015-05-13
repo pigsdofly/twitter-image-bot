@@ -8,14 +8,8 @@ import os
 
 def main():
     bot = Bot()
-    
-    last_tweet = bot.last_status(local_settings.source)
      
-    if(last_tweet):
-        last_id = requests.get(last_tweet.split(" ")[0]).url.split("/")[-1]
-    else:
-        last_id = ""
-    grabber = BooruGrabber(last_id)
+    grabber = BooruGrabber()
     
     bot.followback(local_settings.source)
     grabber.download_image()

@@ -10,3 +10,6 @@ source = ""
 #put danbooru tags here
 tags = ["",""]
 
+#put number of pages to grab here
+pages = 10
+
